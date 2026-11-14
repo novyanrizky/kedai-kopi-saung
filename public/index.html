@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saung — Kedai Kopi, Cimahi</title>
+  <meta name="description" content="Pesan kopi dan makanan dari Kedai Kopi Saung, Cimahi. Diseduh saat dipesan.">
+  <meta name="theme-color" content="#F2EDE4">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar" id="topbar">
+    <a class="wordmark" href="#top" aria-label="Saung, kembali ke atas">saung<span>.</span></a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#menu">Menu</a>
+      <a href="#cerita">Cerita</a>
+      <a href="#lacak">Lacak</a>
+    </nav>
+    <div class="topbar-right">
+      <span class="open-pill" id="openPill"><i></i><span>Memeriksa jam…</span></span>
+      <button class="bag-btn" id="bagBtn" type="button" aria-label="Buka pesanan">
+        <span class="bag-label">Pesanan</span>
+        <span class="bag-count" id="bagCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow reveal-load">Kedai kopi &middot; Cimahi, Jawa Barat</p>
+        <h1 class="hero-title" aria-label="Diseduh pelan, dinikmati tanpa terburu.">
+          <span class="line" aria-hidden="true"><span>Diseduh <em>pelan,</em></span></span>
+          <span class="line" aria-hidden="true"><span>dinikmati</span></span>
+          <span class="line" aria-hidden="true"><span>tanpa <em>terburu.</em></span></span>
+        </h1>
+        <p class="hero-lead reveal-load">Biji dari Garut dan Malabar, gula aren Ciamis, susu segar Lembang. Pilih menu, kirim pesanan, dan kami baru menyeduh begitu pesananmu masuk.</p>
+        <div class="hero-actions reveal-load">
+          <a class="btn btn-ink" href="#menu">Lihat menu <span class="arrow" aria-hidden="true">↓</span></a>
+          <a class="btn btn-line" href="#lacak">Lacak pesanan</a>
+        </div>
+        <p class="pulse reveal-load" id="pulse" hidden>
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span><b id="cupCount">0</b> cangkir kopi diseduh hari ini</span>
+        </p>
+      </div>
+
+      <figure class="hero-media">
+        <div class="arch" id="heroArch">
+          <img src="/img/hero.webp" alt="Secangkir espresso di bawah bayangan daun" width="1000" height="1300" fetchpriority="high">
+        </div>
+        <figcaption class="hero-cap mono"><span>N° 01</span> Espresso pagi di bawah bayangan daun</figcaption>
+        <div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><path id="circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+            <text><textPath href="#circle">DISEDUH SAAT DIPESAN · KEDAI KOPI SAUNG · </textPath></text>
+          </svg>
+          <span>✳</span>
+        </div>
+      </figure>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marquee">
+        <span>Robusta Garut</span><i>✳</i>
+        <span>Arabika Java Preanger</span><i>✳</i>
+        <span>Gula aren Ciamis</span><i>✳</i>
+        <span>Susu segar Lembang</span><i>✳</i>
+        <span>Disangrai setiap pekan</span><i>✳</i>
+      </div>
+    </div>
+
+    <section class="menu" id="menu" aria-labelledby="menuTitle">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Daftar menu</p>
+          <h2 class="section-title" id="menuTitle">Menu <sup class="mono" id="menuCount"></sup></h2>
+        </div>
+        <div class="tabs" role="tablist" id="tabs" aria-label="Kategori menu">
+          <button role="tab" type="button" aria-selected="true" data-cat="semua">Semua</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="kopi">Kopi</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="non-kopi">Non-kopi</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="makanan">Makanan</button>
+          <span class="tab-ink" id="tabInk" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <ol class="menu-list" id="menuList" aria-live="polite">
+        <li class="menu-state">Memuat menu…</li>
+      </ol>
+    </section>
+
+    <section class="story" id="cerita" aria-labelledby="storyTitle">
+      <figure class="story-media reveal">
+        <img src="/img/cerita.webp" alt="Barista menyeduh kopi secara manual di meja bar" width="1100" height="1300" loading="lazy">
+      </figure>
+      <div class="story-copy">
+        <p class="eyebrow reveal">Cerita</p>
+        <h2 class="section-title reveal" id="storyTitle">Dari gerobak kecil, <em>ke saung</em> di ujung gang.</h2>
+        <p class="story-lead reveal">Saung lahir dari gerobak kopi di pinggir jalan Cimahi. Sekarang kami punya atap, enam meja kayu, dan satu prinsip yang tidak berubah: kopi yang baik tidak perlu mahal, tapi tidak boleh terburu-buru.</p>
+        <ol class="principles">
+          <li class="reveal"><span class="mono">01</span><div><h3>Biji dari tanah sendiri</h3><p>Hanya kopi Jawa Barat, disangrai sendiri setiap pekan dalam jumlah kecil.</p></div></li>
+          <li class="reveal"><span class="mono">02</span><div><h3>Diseduh saat dipesan</h3><p>Tidak ada kopi yang menunggu di teko. Pesananmu masuk, mesin baru menyala.</p></div></li>
+          <li class="reveal"><span class="mono">03</span><div><h3>Harga warung</h3><p>Rasa kedai, harga yang tetap ramah untuk pelajar dan pekerja.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="track" id="lacak" aria-labelledby="trackTitle">
+      <div class="track-inner reveal">
+        <p class="eyebrow">Lacak pesanan</p>
+        <h2 class="section-title" id="trackTitle">Sudah sampai mana <em>pesananmu?</em></h2>
+        <form class="track-form" id="trackForm" autocomplete="off">
+          <label class="sr-only" for="trackCode">Kode pesanan</label>
+          <span class="hash mono" aria-hidden="true">#</span>
+          <input id="trackCode" class="mono" maxlength="5" placeholder="KODE5" spellcheck="false" autocapitalize="characters">
+          <button class="btn btn-ink" type="submit">Lacak</button>
+        </form>
+        <div class="recent" id="recentOrders"></div>
+        <div class="track-result" id="trackResult" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-mark" aria-hidden="true">saung<span>.</span></div>
+    <div class="footer-cols">
+      <div><h4>Alamat</h4><p>Cimahi, Jawa Barat</p></div>
+      <div><h4>Jam buka</h4><p>Setiap hari<br>07.00 – 22.00 WIB</p></div>
+      <div><h4>Server</h4><p class="mono" id="deployInfo">—</p></div>
+    </div>
+    <p class="fine">Kedai Kopi Saung adalah studi kasus untuk Proyek Akhir PaaS kelas XII SIJA, SMKN 1 Cimahi. Foto: Unsplash.</p>
+  </footer>
+
+  <!-- Gambar yang mengikuti kursor saat menu disorot (desktop) -->
+  <div class="cursor-photo" id="cursorPhoto" aria-hidden="true"><img alt=""></div>
+
+  <!-- Panel pesanan -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer" aria-label="Pesanan" aria-hidden="true" inert>
+    <div class="drawer-head">
+      <span class="mono">Pesanan kamu</span>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Tutup panel pesanan">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <!-- Detail menu -->
+  <dialog class="detail" id="detail" aria-labelledby="dName">
+    <div class="detail-media"><img id="dImg" alt=""></div>
+    <div class="detail-body">
+      <button class="icon-btn detail-close" id="detailClose" type="button" aria-label="Tutup detail">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <p class="eyebrow" id="dCat"></p>
+      <h3 id="dName"></h3>
+      <p class="detail-desc" id="dDesc"></p>
+      <p class="detail-notes mono" id="dNotes"></p>
+      <div class="detail-foot">
+        <span class="detail-price mono" id="dPrice"></span>
+        <div id="dAct"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dapur — Saung</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F2EDE4">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body class="admin">
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Login -->
+  <section class="login" id="login">
+    <form class="login-card" id="loginForm">
+      <a class="wordmark" href="/">saung<span>.</span></a>
+      <p class="eyebrow">Dapur · khusus pengelola</p>
+      <h1>Masuk ke dapur</h1>
+      <div class="field">
+        <label for="pw">Password admin</label>
+        <input id="pw" type="password" autocomplete="current-password" required>
+      </div>
+      <p class="form-error" id="loginError" role="alert"></p>
+      <button class="btn btn-ink" type="submit">Masuk</button>
+    </form>
+  </section>
+
+  <!-- Aplikasi admin -->
+  <div class="app" id="app" hidden>
+    <header class="a-top">
+      <a class="wordmark" href="/" title="Lihat halaman pelanggan">saung<span>.</span></a>
+      <span class="a-crumb mono">/ dapur</span>
+      <nav class="a-tabs" id="aTabs" role="tablist">
+        <button role="tab" aria-selected="true" data-view="orders">Pesanan <span class="badge" id="badge" hidden>0</span></button>
+        <button role="tab" aria-selected="false" data-view="menu">Menu</button>
+        <button role="tab" aria-selected="false" data-view="summary">Ringkasan</button>
+      </nav>
+      <div class="a-right">
+        <span class="live mono" id="live"><i></i>Langsung</span>
+        <button class="btn btn-line a-logout" id="logout" type="button">Keluar</button>
+      </div>
+    </header>
+
+    <main class="a-main">
+      <!-- Pesanan -->
+      <section data-panel="orders">
+        <div class="a-head">
+          <h2>Pesanan</h2>
+          <div class="filters" id="filters">
+            <button class="chip on" data-filter="aktif" type="button">Aktif</button>
+            <button class="chip" data-filter="selesai" type="button">Selesai</button>
+            <button class="chip" data-filter="batal" type="button">Batal</button>
+            <button class="chip" data-filter="semua" type="button">Semua</button>
+          </div>
+        </div>
+        <div class="board" id="board"></div>
+      </section>
+
+      <!-- Menu -->
+      <section data-panel="menu" hidden>
+        <div class="a-head">
+          <h2>Menu</h2>
+          <p class="a-hint">Ubah harga lalu tekan Enter. Matikan saklar jika menu habis. Perubahan langsung tampil di halaman pelanggan.</p>
+        </div>
+        <div class="menu-table" id="menuTable"></div>
+
+        <form class="add-card" id="addForm">
+          <h3>Tambah menu baru</h3>
+          <div class="add-grid">
+            <div class="field"><label for="aName">Nama menu</label><input id="aName" name="name" maxlength="60" required></div>
+            <div class="field"><label for="aCat">Kategori</label>
+              <select id="aCat" name="category">
+                <option value="kopi">Kopi</option><option value="non-kopi">Non-kopi</option><option value="makanan">Makanan</option>
+              </select>
+            </div>
+            <div class="field"><label for="aPrice">Harga (Rp)</label><input id="aPrice" name="price" type="number" min="0" step="500" required></div>
+            <div class="field"><label for="aTag">Label (opsional)</label><input id="aTag" name="tag" maxlength="20" placeholder="Baru, Terlaris…"></div>
+            <div class="field wide"><label for="aDesc">Deskripsi</label><input id="aDesc" name="description" maxlength="300"></div>
+            <div class="field"><label for="aNotes">Catatan rasa</label><input id="aNotes" name="notes" maxlength="80" placeholder="Karamel · susu"></div>
+            <div class="field"><label for="aImg">URL foto (https://…)</label><input id="aImg" name="image" maxlength="500" placeholder="https://…"></div>
+          </div>
+          <p class="form-error" id="addError" role="alert"></p>
+          <button class="btn btn-ink" type="submit">Tambah menu</button>
+        </form>
+      </section>
+
+      <!-- Ringkasan -->
+      <section data-panel="summary" hidden>
+        <div class="a-head"><h2>Ringkasan</h2><p class="a-hint" id="sumDate"></p></div>
+        <div class="stats" id="stats"></div>
+        <div class="top-card">
+          <h3>Menu terlaris (sepanjang waktu)</h3>
+          <ol class="top-list" id="topList"></ol>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
