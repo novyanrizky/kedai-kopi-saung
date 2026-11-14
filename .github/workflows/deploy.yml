@@ -41,7 +41,7 @@ jobs:
         run: |
           START=$(date -u +%s)
           echo "Memicu deploy untuk commit ${GITHUB_SHA::7}..."
-          curl --fail-with-body -sS "$COOLIFY_WEBHOOK" -H "Authorization: Bearer $COOLIFY_TOKEN"
+          curl --fail-with-body -sS -X POST "$COOLIFY_WEBHOOK" -H "Authorization: Bearer $COOLIFY_TOKEN"
           echo
           URL=https://saung.novyanrizkywahyudi.com
           for i in $(seq 1 36); do
